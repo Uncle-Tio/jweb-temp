@@ -5,10 +5,6 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
-    branches: [ master, release* ]
-  pull_request:
-    branches: [ master, release* ]
   workflow_dispatch:
 
 jobs:
@@ -34,11 +30,6 @@ jobs:
         env:
           JELLYFIN_VERSION: ${{ github.event.pull_request.head.sha || github.sha }}
         run: npm run build:production
-
-      - name: Update config.json for testing
-        run: |
-          jq '.multiserver=true | .servers=["https://demo.jellyfin.org/unstable"]' dist/config.json > dist/config.tmp.json
-          mv dist/config.tmp.json dist/config.json
 
       - name: Upload artifact
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
