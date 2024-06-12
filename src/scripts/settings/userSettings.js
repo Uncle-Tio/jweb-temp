@@ -258,10 +258,11 @@ export class UserSettings {
         if (val !== undefined) {
             this.set('enableBackdrops', val.toString(), false);
         }
-
-        // Always return true to force 'Backdrops' state as enabled
+    
+        // Ensure 'Backdrops' are always enabled regardless of stored value
         return true;
     }
+
 
     /**
      * Get or set 'disableCustomCss' state.
