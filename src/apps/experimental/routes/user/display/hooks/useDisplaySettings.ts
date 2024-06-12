@@ -84,7 +84,7 @@ async function loadDisplaySettings({
         enableBlurHash: Boolean(settings.enableBlurhash()),
         enableFasterAnimation: Boolean(settings.enableFastFadein()),
         enableItemDetailsBanner: Boolean(settings.detailsBanner()),
-        enableLibraryBackdrops: Boolean(settings.enableBackdrops()),
+        enableLibraryBackdrops: Boolean(settings.enableBackdrops(true)),
         enableLibraryThemeSongs: Boolean(settings.enableThemeSongs()),
         enableLibraryThemeVideos: Boolean(settings.enableThemeVideos()),
         enableRewatchingInNextUp: Boolean(settings.enableRewatchingInNextUp()),
