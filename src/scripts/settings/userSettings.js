@@ -251,15 +251,16 @@ export class UserSettings {
 
     /**
      * Get or set 'Backdrops' state.
-     * @param {boolean|undefined} [val] - Flag to enable 'Backdrops' or undefined.
+     * @param {boolean|undefined} val - Flag to enable 'Backdrops' or undefined.
      * @return {boolean} 'Backdrops' state.
      */
     enableBackdrops(val) {
         if (val !== undefined) {
-            return this.set('enableBackdrops', val.toString(), false);
+            this.set('enableBackdrops', val.toString(), false);
         }
 
-        return toBoolean(this.get('enableBackdrops', false), false);
+        // Always return true to force 'Backdrops' state as enabled
+        return true;
     }
 
     /**
