@@ -1,6 +1,6 @@
 import globalize from 'scripts/globalize';
 
-const transformLanguageValue = (value) => {
+const transformLanguageValue = (value: string): string => {
     if (value === 'pt' || value === 'pt-PT') {
         return 'pt-BR';
     }
