@@ -1,6 +1,13 @@
 import globalize from 'scripts/globalize';
 
-const LANGUAGE_OPTIONS = [
+const transformLanguageValue = (value) => {
+    if (value === 'pt' || value === 'pt-PT') {
+        return 'pt-BR';
+    }
+    return value;
+};
+
+export const LANGUAGE_OPTIONS = [
     { value: 'auto', label: globalize.translate('Auto') },
     { value: 'af', label: 'Afrikaans' },
     { value: 'ar', label: 'العربية' },
@@ -73,16 +80,7 @@ const LANGUAGE_OPTIONS = [
     { value: 'zh-CN', label: '汉语 (简化字)' },
     { value: 'zh-TW', label: '漢語 (繁体字)' },
     { value: 'zh-HK', label: '廣東話 (香港)' }
-];
-
-const updatedLanguageOptions = LANGUAGE_OPTIONS.map(option => {
-    if (option.value === 'pt' || option.value === 'pt-PT') {
-        return { ...option, value: 'pt-BR' };
-    }
-    return option;
-});
+].map(option => ({ value: transformLanguageValue(option.value), label: option.label }));
 
 // NOTE: Option `Euskara` (eu) does not exist in legacy date locale options.
-export const DATE_LOCALE_OPTIONS = updatedLanguageOptions.filter(({ value }) => value !== 'eu');
-
-export { updatedLanguageOptions as LANGUAGE_OPTIONS };
+export const DATE_LOCALE_OPTIONS = LANGUAGE_OPTIONS.filter(({ value }) => value !== 'eu');
